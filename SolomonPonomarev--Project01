@@ -1,0 +1,52 @@
+/* ----------------------------------------------------------------------------
+* Copyright &copy; 2016 Solomon Ponomarev <obscure31@csu.fullerton.edu>
+* Released under the [MIT License] (http://opensource.org/licenses/MIT)
+* ------------------------------------------------------------------------- */
+
+/**
+* Conversion of Numbers to Roman Numerals
+*/
+#include <string>
+#include <iostream>
+
+ string ROMAN_NUMERAL_FUNCTION(int var);
+ 
+  using std::endl;
+ using std::cout;
+ using std::string;
+ using std::cin;
+ 
+ 
+ int main()
+ {
+ 	int var;
+ 	char choice;
+ 	do{
+     	cout << "Please enter an integer: ";
+     	cin >> var;
+     	cout << ROMAN_NUMERAL_FUNCTION(var) << endl;
+     	
+     	cout << "Would you like to convert another integer (Y/N)?";
+     	cin >> choice;
+     	cout << endl;
+     	
+     	} while (choice == 'y' || choice == 'Y'); 
+     	
+ 	return 0;
+ }
+ 
+ string ROMAN_NUMERAL_FUNCTION(int var) 
+ {
+  string Final = "";
+        int RomanInts [] = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4 , 1 }; // Array for Roman number equivalence
+      string RomanNums [] = { "M","CM","D","CD","C","XC","L","XL","X","IX","V","VI","I" }; // Roman numerals array
+    
+
+     for(int i = 0; i <= 12; i++){
+         for(int j = 0; j < var / RomanInts[i]; j++){         
+             Final += RomanNums[i];
+         }        
+         var %= RomanInts[i];
+     }     
+     return Final;
+ }
